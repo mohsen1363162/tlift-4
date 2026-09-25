@@ -1,0 +1,8 @@
+{
+  "name": "سامانه آسمان سرا - emami-asemansara.ir",
+  "description": "سامانه مدیریت و خدمات آسانسور آسمان سرا (emami-asemansara.ir) - مدیریت قراردادها، سرویس‌ها و خرابی‌ها",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

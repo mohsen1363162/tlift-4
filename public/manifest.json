@@ -1,0 +1,22 @@
+{
+  "id": "/asemansara-app-v3",
+  "name": "آسمانسرا",
+  "short_name": "آسمانسرا",
+  "description": "نرم‌افزار مستقل خدمات و مدیریت آسانسور آسمانسرا",
+  "start_url": "/?mode=mobile",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "fa",
+  "background_color": "#1e293b",
+  "theme_color": "#2563eb",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/pwa-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/pwa-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

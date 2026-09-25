@@ -1,0 +1,42 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # اگر فایل یا پوشه واقعی وجود دارد، مستقیماً لود شود
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # در غیر این صورت تمامی درخواست‌ها به index.html هدایت شوند (برای پشتیبانی از React SPA)
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# فایل‌های ورود و Service Worker هرگز نباید با نسخه قدیمی در مرورگر بمانند.
+# نام فایل‌های داخل assets هش دارد و می‌تواند با خیال راحت طولانی‌مدت کش شود.
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\.html|sw\.js|registerSW\.js|manifest\.webmanifest|manifest\.json)$">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:css|js|woff2?|png|jpg|jpeg|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # قانون فایل‌های حساس باید بعد از قانون عمومی اجرا و آن را بازنویسی کند.
+  <FilesMatch "^(sw\.js|registerSW\.js)$">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>

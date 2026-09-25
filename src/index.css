@@ -1,0 +1,180 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Add Persian font */
+@font-face {
+  font-family: 'Vazir';
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2') format('woff2');
+  font-display: swap;
+}
+
+@layer components {
+  /* Calendar styles */
+  .color-circle {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+  
+  /* Table highlighting */
+  .done-row { 
+    background: #e6ffe6 !important; 
+  }
+  
+  .done-cell { 
+    color: #16a34a; 
+    font-weight: bold; 
+  }
+  
+  /* Fix Shadcn Z-Index issues with Select */
+  .SelectContent {
+    z-index: 9999;
+    background-color: white;
+  }
+  
+  /* Persian styling */
+  body { 
+    font-family: Vazir, Tahoma, Arial, sans-serif;
+    background-image:
+      radial-gradient(circle at 8% 10%, rgba(186, 230, 253, 0.22), transparent 28rem),
+      radial-gradient(circle at 92% 85%, rgba(254, 205, 211, 0.18), transparent 30rem);
+  }
+
+  /* Friendly, soft interaction language across the workspace */
+  button, input, select, textarea {
+    transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  button:not(:disabled):active {
+    transform: scale(0.98);
+  }
+
+  input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.12);
+  }
+
+  /* کنترل عددی واضح‌تر در تمام نرم‌افزار */
+  input[type="number"] {
+    min-height: 2.5rem;
+    font-weight: 600;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    min-width: 1.75rem;
+    min-height: 2.5rem;
+    opacity: 1;
+    cursor: pointer;
+  }
+  .number-stepper-input::-webkit-inner-spin-button,
+  .number-stepper-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .number-stepper-input { appearance: textfield; -moz-appearance: textfield; }
+
+  table tbody tr:nth-child(even) {
+    background-color: rgba(224, 242, 254, 0.025);
+  }
+
+  table tbody tr:hover {
+    background-color: rgba(254, 226, 226, 0.055);
+  }
+
+  /* Custom Persian calendar styles */
+  .persian-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #eef2ff;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .persian-weekday {
+    font-weight: bold;
+    color: #1e40af;
+    text-align: center;
+  }
+
+  /* Make calendar popover larger */
+  [data-radix-popper-content-wrapper] {
+    min-width: 320px !important;
+  }
+}
+
